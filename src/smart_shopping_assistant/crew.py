@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SERPAPI_API_KEY = os.getenv("SERPER_API_KEY")
-SERPAPI_GOOGLE_SHOPPING_TOOL = SerpApiGoogleShoppingTool(api_key=SERPAPI_API_KEY)
+SERPAPI_GOOGLE_SHOPPING_TOOL = SerpApiGoogleShoppingTool(api_key='60718af1c5141912017eed131f3668a62c663826')
 
 @CrewBase
 class SmartShoppingAssistantCrew:
