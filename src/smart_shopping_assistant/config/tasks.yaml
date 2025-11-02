@@ -1,0 +1,30 @@
+---
+smart_list_generation:
+  description: Generate a comprehensive and intelligent shopping list for the user
+    based on their preferences, shopping history, and current needs. Analyze {user_preferences}
+    including dietary restrictions, favorite brands, and household size. Consider
+    {shopping_history} to identify patterns and suggest items the user might be running
+    low on. Create a well-organized list with reasoning for each item selection.
+  expected_output: |-
+    A JSON formatted response containing:
+    - items: Array of shopping list items with categories, quantities, and priorities
+    - reasoning: Detailed explanation for why each item was included based on user preferences and history
+    - estimated_total: Rough budget estimate for the shopping trip
+    - categories: Organized grouping of items by store sections (produce, dairy, pantry, etc.)
+  agent: smart_list_manager_agent
+deal_hunting:
+  description: Search for the best prices and active deals for all items in the generated
+    shopping list. Compare prices across multiple grocery stores and retailers, identify
+    promotional offers, coupons, and seasonal deals. Consider {user_preferences} for
+    preferred stores and shopping locations. Provide comprehensive price comparisons
+    and money-saving recommendations.
+  expected_output: |-
+    A JSON formatted response containing:
+    - comparisons: Detailed price comparison for each item across different stores
+    - recommendations: Best store recommendations for each item or category
+    - savings: Total potential savings and percentage saved compared to regular prices
+    - deals: List of current promotions, coupons, and special offers available
+    - optimized_route: Suggested store visit order for maximum savings and convenience
+  agent: deal_hunter_agent
+  context:
+  - smart_list_generation
