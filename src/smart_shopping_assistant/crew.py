@@ -4,8 +4,7 @@ from crewai import LLM
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import (
-	ScrapeWebsiteTool,
-	SerpApiGoogleShoppingTool
+	ScrapeWebsiteTool
 )
 
 
@@ -26,10 +25,7 @@ class SmartShoppingAssistantCrew:
             config=self.agents_config["smart_list_manager_agent"],
             
             
-            tools=[
-				ScrapeWebsiteTool(),
-				SerpApiGoogleShoppingTool()
-            ],
+            tools=[ScrapeWebsiteTool()],
             reasoning=False,
             max_reasoning_attempts=None,
             inject_date=True,
@@ -52,10 +48,7 @@ class SmartShoppingAssistantCrew:
             config=self.agents_config["deal_hunter_agent"],
             
             
-            tools=[
-				SerpApiGoogleShoppingTool(),
-				ScrapeWebsiteTool()
-            ],
+            tools=[ScrapeWebsiteTool()],
             reasoning=False,
             max_reasoning_attempts=None,
             inject_date=True,
