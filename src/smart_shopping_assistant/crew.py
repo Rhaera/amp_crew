@@ -7,11 +7,11 @@ from crewai_tools import (
 	ScrapeWebsiteTool,
 	SerpApiGoogleShoppingTool
 )
+from dotenv import load_dotenv
+load_dotenv()
 
-
-
-
-
+SERPAPI_API_KEY = os.getenv("SERPER_API_KEY")
+SERPAPI_GOOGLE_SHOPPING_TOOL = SerpApiGoogleShoppingTool(api_key=SERPAPI_API_KEY)
 
 @CrewBase
 class SmartShoppingAssistantCrew:
@@ -28,7 +28,7 @@ class SmartShoppingAssistantCrew:
             
             tools=[
 				ScrapeWebsiteTool(),
-				SerpApiGoogleShoppingTool()
+				SERPAPI_GOOGLE_SHOPPING_TOOL
             ],
             reasoning=False,
             max_reasoning_attempts=None,
@@ -53,7 +53,7 @@ class SmartShoppingAssistantCrew:
             
             
             tools=[
-				SerpApiGoogleShoppingTool(),
+				SERPAPI_GOOGLE_SHOPPING_TOOL,
 				ScrapeWebsiteTool()
             ],
             reasoning=False,
