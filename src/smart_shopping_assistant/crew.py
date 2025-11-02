@@ -8,10 +8,14 @@ from crewai_tools import (
 	SerpApiGoogleShoppingTool
 )
 from dotenv import load_dotenv
-load_dotenv()
 
-SERPAPI_API_KEY = os.getenv("SERPER_API_KEY")
-SERPAPI_GOOGLE_SHOPPING_TOOL = SerpApiGoogleShoppingTool(api_key='60718af1c5141912017eed131f3668a62c663826')
+load_dotenv()  # carrega variáveis do .env para o ambiente
+
+# Certifique-se que no arquivo .env existe a linha:
+# SERPAPI_API_KEY=sua_chave_aqui
+
+# Inicializa a ferramenta sem explicitamente passar a chave
+SERPAPI_GOOGLE_SHOPPING_TOOL = SerpApiGoogleShoppingTool()
 
 @CrewBase
 class SmartShoppingAssistantCrew:
